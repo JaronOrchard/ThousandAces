@@ -95,7 +95,7 @@ void CardIdentifier::processTrainingData() {
 	// For each training image, preprocess it:
 	trainingCards.clear();
 	for (unsigned int i = 0; i < card_paths.size(); i++) {
-		string current_path = "C:/Users/Jared/Documents/CS 543/Class Project/example_images/training_images/" + card_paths[i];
+		string current_path = "./training_images/" + card_paths[i];
 		Mat current_card = imread(current_path, IMREAD_GRAYSCALE);
 		GaussianBlur(current_card, current_card, Size(5,5), 2);
 		adaptiveThreshold(current_card, current_card, 255, ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY_INV, 3, 2);
