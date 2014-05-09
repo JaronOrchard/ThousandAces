@@ -11,8 +11,7 @@ int main( int argc, char** argv )
 {
 	PinochleHand pinochleHand;
 	CardIdentifier cardIdentifier;
-	cardIdentifier.processHand(pinochleHand, "C:/Users/Jared/Documents/CS 543/Class Project/example_images/hand_1.jpg");
-
-
-    return 0;
+	cardIdentifier.processHand(pinochleHand, "C:/Users/Jared/Documents/CS 543/Class Project/example_images/hand_6.jpg");
+	pinochleHand.determineBid();
+	return 0;
 }

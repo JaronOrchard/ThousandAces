@@ -1,4 +1,4 @@
-#ifndef CARD_IDENTIFIER_H
+﻿#ifndef CARD_IDENTIFIER_H
 #define CARD_IDENTIFIER_H
 
 #include "pinochle_hand.h"
@@ -107,6 +107,7 @@ void CardIdentifier::processTrainingData() {
 // The following site was useful in determining how to extract and compare the cards:
 // http://arnab.org/blog/so-i-suck-24-automating-card-games-using-opencv-and-python
 void CardIdentifier::processHand(PinochleHand & pinochleHand, string hand_path) {
+	cout << "=== Processing hand..." << endl;
 	Mat hand_color = imread(hand_path, IMREAD_COLOR);
 	Mat hand_gray = imread(hand_path, IMREAD_GRAYSCALE);
 	GaussianBlur(hand_gray, hand_gray, Size(3,3), 2);
@@ -170,10 +171,9 @@ void CardIdentifier::processHand(PinochleHand & pinochleHand, string hand_path) 
 		// Identify the card by matching it against all known training cards:
 		int card_index = identifyCard(card_modified);
 		addToHand(pinochleHand, card_index);
-		cout << "Card is: " << getCardName(card_index) << endl;
+		cout << "Found card: " << getCardName(card_index) << endl;
 	}
 	cout << endl;
-	pinochleHand.determineMeld();
 }
 
 int CardIdentifier::identifyCard(Mat currentCard) {
